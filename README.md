@@ -88,3 +88,123 @@ print(word)
 
 # The result should be "reduce" in the console
 ```
+
+# Decorator
+
+```Python
+# 1. Functions are objects
+def add_five(num):
+  return num+5
+
+print(add_five)
+
+# RESULT
+# <function add_five at 0x7f07b9bc8dd0>
+
+#####################################
+
+# 2. Functions within functions
+def add_five(num):
+  def add_two(num):
+    return num+2
+
+  num_plus_two = add_two(num)
+  print(num_plus_two + 3)
+
+add_five(10)
+
+# RESULT
+# 5
+
+#####################################
+
+# 3. Returning functions from functions
+def get_math_function(operation): # + or -
+  def add(n1, n2):
+    return n1 + n2
+  def sub(n1, n2):
+    return n1 - n2
+
+  if operation == '+':
+    return add
+  elif operation == '-':
+    return sub
+
+add_function = get_math_function('+')
+print(add_function)
+print(add_function(1,2))
+
+# RESULT:
+# <function get_math_function.<locals>.add at 0x7f07b9bb1170>
+# 3
+
+#####################################
+
+# 4. Decorating a function
+# We call it as decorated function as it decorating print_my_name() function
+# with print("Professor:") above. This is done by putting the target function
+# into a wrapper function.
+
+def title_decorator(print_name_function):
+  def wrapper():
+    print("Professor:")
+    print_name_function()
+  return wrapper
+
+def print_my_name():
+  print("Mike")
+
+decorated_function = title_decorator(print_my_name)
+
+decorated_function()
+
+# RESULT:
+# Professor:
+# Mike
+
+#####################################
+
+# 5. Decorators
+# Instead of calling decorated_function = title_decorator(print_my_name)
+# We just use @title_decorator just before the targeted function, then
+# we can that targeted function directly and it will be decorated.
+
+def title_decorator(print_name_function):
+  def wrapper():
+    print("Professor:")
+    print_name_function()
+  return wrapper
+
+@title_decorator
+def print_my_name():
+  print("Mike")
+
+print_my_name()
+
+# RESULT:
+# Professor:
+# Mike
+
+#####################################
+
+# 6. Decorators with Parameters
+# Targeted function can have parameter, which can be passed to wrapper
+# by adding *args, **kargs. *args for positional parameters as a list
+# and *kargs for position paramters as dictionary
+
+def title_decorator(print_name_function):
+  def wrapper(*args, **kargs):
+    print("Professor:")
+    print_name_function(*args, **kargs)
+  return wrapper
+
+@title_decorator
+def print_my_name(first_name, last_name):
+  print(f"{first_name} {last_name}")
+
+print_my_name("Son", "Pham")
+
+# RESULT:
+# Professor:
+# Son Pham
+```
