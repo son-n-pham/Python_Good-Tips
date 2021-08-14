@@ -1,3 +1,27 @@
+# lamda
+lambda is used to replace simple function
+
+Example:
+```Python
+# Normal function
+def double(x):
+  return x*2
+  
+# Re-write by using lambda
+double = lambda x: x*2
+```
+```Python
+# Normal function
+def double_or_square(x):
+  if x%2 == 0:
+    return x*2
+  else:
+    return x**2
+  
+# Re-write by using lambda
+double = lambda x: x*2 if x%2==0 else x**2
+```
+
 # map() higher-order function
 
 maps() are higher-order function with below syntax:
