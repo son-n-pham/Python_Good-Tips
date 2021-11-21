@@ -140,7 +140,7 @@ print(add_function(1,2))
 #####################################
 
 # 4. Decorating a function
-# We call it as decorated function as it decorating print_my_name() function
+# We call it as decorated function as it is decorating print_my_name() function
 # with print("Professor:") above. This is done by putting the target function
 # into a wrapper function.
 
