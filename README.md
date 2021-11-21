@@ -69,7 +69,6 @@ It is similar to map by taking 2 arguments, which is a function and a list
 
 This function is different from map() and filter():
 - It needs to be import from ***functools*** module
-- It functionality is not as our expectation
 ![Reduce()-Function](https://user-images.githubusercontent.com/79841341/129449142-50872890-8347-43ad-9593-2fdee4dca8a7.gif)
 
 Example:
@@ -114,7 +113,7 @@ def add_five(num):
 add_five(10)
 
 # RESULT
-# 5
+# 15
 
 #####################################
 
